@@ -1,0 +1,36 @@
+View with indentation of 2 spaces
+
+
+Opcode			Label																Data Parsed													Purpose
+
+			-Band Transmit opcodes
+a						EEPROM Setting data of Mode 1				Zone1, zone2 zone3		[0, 255]->[20, 40] (20+k/255*20)					In response to request for Setting data upon start up
+b						EEPROM Setting data of Mode 2				Zone1, zone2 zone3							
+c						EEPROM Setting data of Mode 3				Zone1, zone2 zone3	
+d						Change App Current Mode						modeNumber,0,0											Update App interface when toggle button pressed
+e						Confirm received 							opcode received,0,0								Not Used
+f						Battery Percentage							percent*10,0,0												In response to request for battery percentage
+g						Zone Temps									(z1Temp+10)*10, (z2Temp+10)*10, (z3Temp+10)*10										In response to request for temperature
+h						Switch off									0,0,0														Notify App that band is off
+i						Switch on									1,1,1														Notify App that band is on
+j						Low Battery warning							percentage*10, 0, 0											Notify app of Low Percentage
+k						Cell Voltage								vCell1*100, vCell2*100, vCell3*100
+l
+
+
+
+			-Band Receive opcodes
+m						Request Setting Data								byte 0,0,0														Upon opening of app, it may request a full update of all the settings
+n						Change EEPROM Mode 1 Settings				Zone1, zone2 zone3							Implement settings changes made on app	
+o						Change EEPROM Mode 2 Settings				Zone1, zone2 zone3		
+p						Change EEPROM Mode 3 Settings				Zone1, zone2 zone3				
+q						Change Band Current Mode					modeNumber,0,0											Update current mode on band			
+r						Request Battery Percent						0,0,0														
+s						Request Temperature							0,0,0
+t						Command Switch off							0,0,0														Tell band to open all heating switches. Arduino remains on.
+u						Set Timer									hours, minutes, 0
+v						Command Switch on							1,1,1
+w
+x
+y						
+z
